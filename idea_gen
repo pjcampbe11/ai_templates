@@ -1,0 +1,138 @@
+Main Prompt: Base question for ChatGPT - Generate 20 Red Team Operation ideas.
+
+User-Provided Source: 
+
+https://trustedsec.com/research
+https://posts.specterops.io/
+https://www.blackhillsinfosec.com/blog/
+https://www.binarydefense.com/resources/blog/
+https://www.fortra.com/blog
+https://whiteknightlabs.com/blog/
+https://redsiege.com/red-siege-blog/
+https://attack.mitre.org/techniques/enterprise/
+
+GPT Version: GPT-4-Plus
+
+OUTPUT
+
+# Red Team Operation Ideas
+
+## 1. Phishing for Credentials via Malicious Links
+- **Technique**: T1566.002
+- **Inspiration**: TrustedSec and Red Siege blogs on phishing
+- **Objective**: Simulate a phishing campaign with malicious links to test employee awareness and email filtering.
+- **Scenario**: Craft tailored phishing emails containing malicious links, measuring both user response and technical defenses.
+
+## 2. Credential Dumping from LSASS Memory
+- **Technique**: T1003.001
+- **Inspiration**: SpecterOps research on credential access
+- **Objective**: Simulate credential dumping attacks to evaluate detection and endpoint defenses.
+- **Scenario**: Utilize tools like Mimikatz to capture credentials, testing detection through endpoint monitoring.
+
+## 3. Lateral Movement through Remote Services
+- **Technique**: T1021
+- **Inspiration**: TrustedSec's work on lateral movement tactics
+- **Objective**: Test lateral movement capabilities to identify weaknesses in network segmentation.
+- **Scenario**: Use remote desktop protocols to navigate between network segments, monitoring lateral detection.
+
+## 4. Kerberoasting for Service Account Access
+- **Technique**: T1558.003
+- **Inspiration**: Red Siege’s deep dive on Kerberoasting
+- **Objective**: Capture and crack Kerberos tickets to gain elevated access.
+- **Scenario**: Target service accounts with Kerberos, testing how quickly compromised credentials are detected.
+
+## 5. DNS Tunneling for Data Exfiltration
+- **Technique**: T1071.004
+- **Inspiration**: Red Siege and White Knight Labs on covert channels
+- **Objective**: Simulate data exfiltration through DNS to test network defenses.
+- **Scenario**: Set up a DNS tunneling channel, exfiltrating mock data to test detection by IDS/IPS.
+
+## 6. Abusing OAuth Tokens for Account Takeover
+- **Technique**: T1550.001
+- **Inspiration**: Fortra’s analysis on cloud security
+- **Objective**: Assess cloud app security by simulating token misuse.
+- **Scenario**: Steal OAuth tokens and attempt access to cloud services, testing for logging and anomaly detection.
+
+## 7. Remote File Copy for Payload Distribution
+- **Technique**: T1105
+- **Inspiration**: Binary Defense's studies on payload deployment
+- **Objective**: Test defenses against unauthorized file distribution within the network.
+- **Scenario**: Copy files across remote systems, simulating a widespread malware delivery.
+
+## 8. PowerShell Script Execution for Fileless Attack
+- **Technique**: T1059.001
+- **Inspiration**: Black Hills on fileless malware
+- **Objective**: Test detection capabilities of fileless attacks using PowerShell.
+- **Scenario**: Run PowerShell scripts to execute in-memory payloads, measuring endpoint monitoring effectiveness.
+
+## 9. Execution of Malicious Office Macros
+- **Technique**: T1204.002
+- **Inspiration**: TrustedSec and Binary Defense on document-based attacks
+- **Objective**: Test resilience against malicious document macros.
+- **Scenario**: Deploy Office files with embedded macros, seeing if endpoint protection detects them.
+
+## 10. Abusing Windows Scheduled Tasks for Persistence
+- **Technique**: T1053.005
+- **Inspiration**: SpecterOps on persistence tactics
+- **Objective**: Establish persistence by creating scheduled tasks.
+- **Scenario**: Create a recurring scheduled task to maintain access, observing detection by monitoring tools.
+
+## 11. Active Directory Enumeration and Abuse
+- **Technique**: T1018
+- **Inspiration**: Black Hills Infosec’s insights into AD security
+- **Objective**: Map and exploit AD relationships to test for AD abuse detection.
+- **Scenario**: Use tools to enumerate AD objects and misconfigurations, assessing logging and alerting.
+
+## 12. In-Memory Code Execution to Avoid Disk Artifacts
+- **Technique**: T1055
+- **Inspiration**: SpecterOps and Binary Defense on memory-based attacks
+- **Objective**: Test defenses against in-memory attacks to evade traditional file-based detection.
+- **Scenario**: Deploy payloads directly in memory, checking detection through behavioral monitoring.
+
+## 13. Data Staging and Exfiltration through SMB Shares
+- **Technique**: T1074.002
+- **Inspiration**: TrustedSec’s research on data exfiltration
+- **Objective**: Stage data within SMB shares and attempt exfiltration.
+- **Scenario**: Gather data on an SMB share, testing monitoring tools' ability to detect and alert on data staging.
+
+## 14. Man-in-the-Middle (MITM) Attack on Internal Networks
+- **Technique**: T1557
+- **Inspiration**: Black Hills Infosec on MITM
+- **Objective**: Simulate MITM attacks to intercept sensitive traffic.
+- **Scenario**: Conduct ARP spoofing, capturing network traffic to test for detection of MITM activity.
+
+## 15. Network Scanning to Identify Weak Services
+- **Technique**: T1046
+- **Inspiration**: Red Siege’s coverage of recon techniques
+- **Objective**: Test network segmentation by mapping available services.
+- **Scenario**: Perform scans on internal subnets to find open ports and services, evaluating logging for unauthorized scans.
+
+## 16. Database Injection on Web Applications
+- **Technique**: T1190
+- **Inspiration**: White Knight Labs on web application security
+- **Objective**: Exploit web app vulnerabilities to test input validation and sanitization.
+- **Scenario**: Perform SQL injections to access databases, testing detection and web security practices.
+
+## 17. Bypass of Multi-Factor Authentication (MFA) Using Phishing
+- **Technique**: T1078
+- **Inspiration**: SpecterOps on social engineering
+- **Objective**: Test resilience of MFA against phishing attacks.
+- **Scenario**: Execute phishing campaigns targeting MFA tokens, observing the effectiveness of phishing-resistant MFA.
+
+## 18. Covert Command-and-Control (C2) Over HTTPS
+- **Technique**: T1071.001
+- **Inspiration**: Fortra’s analysis on encrypted traffic
+- **Objective**: Test network defenses against C2 over HTTPS.
+- **Scenario**: Set up a C2 channel that mimics legitimate HTTPS traffic to avoid detection.
+
+## 19. Privilege Escalation via Misconfigured Service Paths
+- **Technique**: T1574.009
+- **Inspiration**: Binary Defense’s privilege escalation examples
+- **Objective**: Identify misconfigured services that allow privilege escalation.
+- **Scenario**: Exploit weak service configurations to escalate privileges, measuring effectiveness of hardening.
+
+## 20. Simulated Ransomware Deployment and Response Test
+- **Technique**: T1486
+- **Inspiration**: TrustedSec and Binary Defense on ransomware
+- **Objective**: Test response and recovery from a simulated ransomware outbreak.
+- **Scenario**: Encrypt non-critical files on a test environment, analyzing incident response readiness.
