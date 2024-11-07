@@ -1,84 +1,115 @@
-
-template:
-  name: "Structured Inquiry and Response on Offensive Red Teaming Operations"
-
-main_question:
-  base_prompt: 
-    example: "What are the latest methodologies in offensive red teaming operations as discussed by top cybersecurity experts?"
-    token_allocation: 150
-
 data_aggregation_requirements:
-  user_provided_sources:
-    description: "Input up to 10 websites as preferred sources for data aggregation."
-    example_sources:
-      - "https://example1.com"
-      - "https://example2.com"
-      - "https://example10.com"
   token_allocation_per_source:
-    description: "Each source summary is capped at 250 tokens."
+    description: Each source summary is capped at 250 tokens.
     total_aggregated_data:
       max_sources: 10
       max_tokens_per_source: 250
       total_tokens: 2500
   total_prompt_with_aggregated_data:
-    base_prompt: 150
     aggregated_data: 2500
+    base_prompt: 150
     total: 2650
-
-response_allocation:
-  introduction:
-    description: "Contextual overview of significance and trends in offensive red teaming."
-    token_allocation: 100
-  detailed_sections:
-    per_source:
-      title_objective: 
-        description: "Brief title and objective for each section."
-        token_allocation: 30
-      approach:
-        description: "Comprehensive discussion on methodologies, tools, and case studies."
-        token_allocation: 600
-      subtotal_per_section: 630
-    total_for_10_sections: 6300
-  conclusion:
-    description: "Summarize key takeaways, trends, and recommendations."
-    token_allocation: 100
-
+  user_provided_sources:
+    description: Input up to 10 websites as preferred sources for data aggregation.
+    example_sources:
+    - https://example1.com
+    - https://example2.com
+    - https://example10.com
 final_calculations_and_buffer:
   combined_token_total:
+    buffer_within_token_limit: 7234
     prompt_with_aggregated_data: 2650
     response: 6500
     total: 9150
-    buffer_within_token_limit: 7234
-
+main_question:
+  base_prompt:
+    example: What are the latest methodologies in offensive red teaming operations
+      as discussed by top cybersecurity experts?
+    token_allocation: 150
+response_allocation:
+  conclusion:
+    description: Summarize key takeaways, trends, and recommendations.
+    token_allocation: 100
+  detailed_sections:
+    per_source:
+      approach:
+        description: Comprehensive discussion on methodologies, tools, and case studies.
+        token_allocation: 600
+      title_objective:
+        description: Brief title and objective for each section.
+        token_allocation: 30
+  introduction:
+    description: Contextual overview of significance and trends in offensive red teaming.
+    token_allocation: 100
+template:
+  chatgpt_version: GPT-4
+  name: Structured Inquiry and Response on Offensive Red Teaming Operations
+token_limits:
+  GPT-4:
+    final_calculations_and_buffer:
+      aggregated_data: 1200
+      base_prompt: 100
+      buffer_within_token_limit: 1196
+      conclusion: 50
+      detailed_sections:
+        per_source: 300
+        total_detailed_sections: 1500
+      introduction: 50
+      total: 2900
+    max_tokens: 4096
+  GPT-4-Plus:
+    final_calculations_and_buffer:
+      aggregated_data: 2500
+      base_prompt: 150
+      buffer_within_token_limit: 342
+      conclusion: 100
+      detailed_sections:
+        per_source: 500
+        total_detailed_sections: 5000
+      introduction: 100
+      total: 7850
+    max_tokens: 8192
+  High-Capacity:
+    final_calculations_and_buffer:
+      aggregated_data: 5000
+      base_prompt: 200
+      buffer_within_token_limit: -66
+      conclusion: 150
+      detailed_sections:
+        per_source: 600
+        total_detailed_sections: 12000
+      introduction: 150
+      total: 17450
+    max_tokens: 16384
 token_stats:
   base_prompt: 150
-  introduction: 100
+  buffer_available: 7234
   conclusion: 100
+  introduction: 100
   token_allocation_per_source:
     max_tokens_per_source:
       data_aggregation: 250
       response: 630
       total: 880
   total_token_counts_based_on_sources:
-    - sources: 1
-      data_aggregation: 250
-      response_sections: 630
-      total: 1230
-    - sources: 2
-      data_aggregation: 500
-      response_sections: 1260
-      total: 2010
-    - sources: 5
-      data_aggregation: 1250
-      response_sections: 3150
-      total: 4650
-    - sources: 7
-      data_aggregation: 1750
-      response_sections: 4410
-      total: 6410
-    - sources: 10
-      data_aggregation: 2500
-      response_sections: 6300
-      total: 9150
+  - data_aggregation: 250
+    response_sections: 630
+    sources: 1
+    total: 1230
+  - data_aggregation: 500
+    response_sections: 1260
+    sources: 2
+    total: 2010
+  - data_aggregation: 1250
+    response_sections: 3150
+    sources: 5
+    total: 4650
+  - data_aggregation: 1750
+    response_sections: 4410
+    sources: 7
+    total: 6410
+  - data_aggregation: 2500
+    response_sections: 6300
+    sources: 10
+    total: 9150
   total_tokens_used_10_sources: 9150
-  buffer_available: 7234
