@@ -1,0 +1,148 @@
+# Real-Time Medical Information Retrieval Template.yaml
+
+instructions:
+  - Define the Main Question (Base Prompt): = [user_input]
+  - Use the template structure and instructions outlined here to answer the question with the most accurate and reliable information.
+  - Follow each defined section below to ensure a thorough, evidence-based response to the Main Question.
+
+objective:
+  description: >
+    For each response, use all 10 sources to ensure comprehensiveness. Simplify medical language to improve readability for patients. 
+    Structure responses in clearly labeled sections with key points summarized.
+
+sections:
+  main_question:
+    description: >
+      The central question posed by the user. This should be defined as:
+      'Main Question (Base Prompt): = [user_input]'
+    example: "Main Question (Base Prompt): = Tell me about ADHD"
+  
+  research_approach:
+    description: >
+      Outline the approach for retrieving information relevant to the Main Question.
+    steps:
+      - Identify key terms and medical concepts within the Main Question.
+      - Determine reliable sources (e.g., recent medical studies, journals, clinical guidelines).
+      - Prioritize sources based on their credibility and relevance to the question.
+  
+  data_aggregation:
+    source_instructions:
+      description: "Aggregate data from 10 reputable medical sources for each patient inquiry. Customize each section with specific focus areas and concise summaries."
+      sources:
+        - name: "EMPR"
+          url: "https://EMPR.com"
+          focus_section: "Drug monographs, clinical tools, and medical news."
+          token_summary: 200  # Adjusted based on clarity needs and key content
+
+        - name: "MedlinePlus"
+          url: "https://Medlineplus.gov"
+          focus_section: "Health topics for patients."
+          token_summary: 200  # Focus on core patient information
+
+        - name: "Merck Manuals"
+          url: "https://Merckmanuals.com"
+          focus_section: "Detailed articles and videos on medical topics."
+          token_summary: 300  # Covers background, symptoms, diagnosis, and treatment
+
+        - name: "Medscape"
+          url: "https://Medscape.org"
+          focus_section: "Clinical studies and drug information."
+          token_summary: 250  # Summarize studies and protocols
+
+        - name: "PubMed"
+          url: "https://Pubmed.ncbi.nlm.nih.gov"
+          focus_section: "Biomedical literature abstracts."
+          token_summary: 150  # Highlight latest research
+
+        - name: "World Health Organization (WHO)"
+          url: "https://WHO.int"
+          focus_section: "Global health information."
+          token_summary: 300  # Health recommendations and outbreak data
+
+        - name: "MedicineNet"
+          url: "https://Medicinenet.com"
+          focus_section: "Information on diseases and treatments."
+          token_summary: 200  # Condense key treatment points
+
+        - name: "Epocrates"
+          url: "https://Epocrates.com/online"
+          focus_section: "Drug and disease references."
+          token_summary: 250  # Drug dosing and safety overview
+
+        - name: "ALA Choice"
+          url: "https://Ala-choice.libguides.com"
+          focus_section: "Bibliographic resources for reliable sources."
+          token_summary: 100  # Guide users to credible medical information
+
+        - name: "PDR"
+          url: "https://PDR.net"
+          focus_section: "Drug monographs and clinical tools."
+          token_summary: 200  # Covers indications and safety data
+
+  information_gathering:
+    description: >
+      Collect evidence-based details to ensure a comprehensive response.
+    components:
+      - Background Information: General overview and context.
+      - Symptoms: Describe common symptoms or diagnostic criteria.
+      - Causes and Risk Factors: Identify potential causes or contributing factors.
+      - Diagnosis: Explain diagnostic processes and tools.
+      - Treatment Options: Summarize current treatment options, including medication, therapy, or lifestyle adjustments.
+      - Prognosis and Outlook: Discuss general prognosis and expected outcomes.
+    source_requirements:
+      - Use at least one source per component from credible medical or scientific publications.
+
+  response_structure:
+    sections:
+      introduction:
+        description: "Overview of the query topic and general considerations."
+        token_allocation: 150  # General summary introduction
+
+      detailed_breakdown:
+        rule_1: "The Response Output should start at the Main Question." 
+        rule_2: "The response output must incorporate the content from the 'focus_section' derived from 'sources'."
+        rule_3: "Use best judgement in terms of output sections."
+        description: "Section-by-section breakdown from each source, presenting concise and patient-friendly information."
+        token_allocation: 1000  # Flexible, can increase or decrease based on total response requirements
+
+      conclusion:
+        description: "Summary and actionable recommendations based on aggregated data."
+        token_allocation: 150  # Concluding guidance or recommendations
+
+  response_assembly:
+    description: >
+      Organize gathered information to form a structured and coherent answer.
+    structure:
+      - Introduction: Brief overview of the topic based on Main Question.
+      - Key Findings: Concise summary of important points from each component.
+      - Conclusion: Summarize main takeaways and any final insights.
+
+  verification:
+    description: >
+      Verification steps to ensure response accuracy.
+    steps:
+      - Cross-check details against multiple credible sources.
+      - Ensure that data aligns with current medical guidelines and practices.
+      - Validate that all statements are backed by recent, authoritative publications.
+
+  final_check:
+    description: >
+      Perform a final review of the answer to confirm completeness and clarity.
+    checklist:
+      - Has each section been addressed thoroughly?
+      - Is the information presented in an accessible, understandable format?
+      - Are all facts up-to-date and medically accurate?
+      - Is the answer free of jargon, or is jargon explained where necessary?
+
+scaling_guidance:
+  token_maximum: 4096  # Total token limit for ChatGPT-4 Plus
+  section_scaling:
+    introduction: "Can be expanded to 200 tokens if topic complexity requires."
+    detailed_breakdown: "Can increase up to 1300 tokens if in-depth analysis from sources is needed."
+    conclusion: "Can extend to 200 tokens if additional actionable guidance is beneficial."
+  example_total_usage: "Typical responses should aim for around 2000 tokens, allowing flexibility in each section depending on inquiry complexity."
+
+output:
+  format: >
+    The answer should be provided in plain text, following the structured format defined
+    in the "response_assembly" section. Ensure clarity and adherence to medical standards.
